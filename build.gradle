@@ -3,8 +3,8 @@ plugins {
     id 'war'
 }
 
-group 'com.parking'
-version '1.0-SNAPSHOT'
+group = 'com.parking'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -14,8 +14,11 @@ ext {
     junitVersion = '5.10.2'
 }
 
-sourceCompatibility = '8'
-targetCompatibility = '8'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
