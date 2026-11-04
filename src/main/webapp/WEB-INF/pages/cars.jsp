@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <t:pageTemplate pageTitle="Cars">
     <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
         <div>
@@ -23,13 +24,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td class="ps-4 fw-medium">SB 12 ABC</td><td>A-01</td><td class="pe-4">Alex Popescu</td></tr>
-                    <tr><td class="ps-4 fw-medium">B 123 XYZ</td><td>A-02</td><td class="pe-4">Maria Ionescu</td></tr>
-                    <tr><td class="ps-4 fw-medium">CJ 45 DEF</td><td>B-04</td><td class="pe-4">Andrei Georgescu</td></tr>
+                    <c:forEach var="car" items="${cars}">
+                        <tr>
+                            <td class="ps-4 fw-medium"><c:out value="${car.licensePlate}" /></td>
+                            <td><c:out value="${car.parkingSpot}" /></td>
+                            <td class="pe-4"><c:out value="${car.ownerName}" /></td>
+                        </tr>
+                    </c:forEach>
+                    <c:if test="${empty cars}">
+                        <tr><td colspan="3" class="text-center text-body-secondary py-4">Nu există mașini în baza de date.</td></tr>
+                    </c:if>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <p class="text-body-secondary small mt-3">Date demonstrative; evidența mașinilor va fi conectată la baza de date în etapa următoare.</p>
 </t:pageTemplate>

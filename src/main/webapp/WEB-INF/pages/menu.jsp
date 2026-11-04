@@ -14,6 +14,9 @@
                     <li class="nav-item">
                         <a class="nav-link${activePage eq 'Cars' ? ' active' : ''}" href="${pageContext.request.contextPath}/Cars">Cars</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link${activePage eq 'Users' ? ' active' : ''}" href="${pageContext.request.contextPath}/Users">Users</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
