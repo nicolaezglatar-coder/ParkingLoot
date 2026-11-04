@@ -47,4 +47,4 @@ The deployable file is `build/libs/ParkingLot-1.0-SNAPSHOT.war`.
 
 The lesson 4 SQL example uses column names that differ from this project's entity mappings. `database/lab4-data.sql` uses the actual `license_plate`, `parking_spot`, and `owner` columns and can be run more than once.
 
-The `create-or-extend-tables` value is an EclipseLink extension, so it is configured with `eclipselink.ddl-generation` and `eclipselink.ddl-generation.output-mode=database`. It creates missing tables and columns; it is not a general migration system for existing constraints or changed column types.
+The `create-or-extend-tables` value is an EclipseLink extension, so it is configured with `eclipselink.ddl-generation` and `eclipselink.ddl-generation.output-mode=database`. It creates missing tables and columns; it is not a general migration system for existing constraints or changed column types. `DatabaseBootstrap` checks the `cars.owner` foreign key and creates it only when missing, avoiding a duplicate-constraint error on redeploy.
