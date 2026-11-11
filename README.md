@@ -1,11 +1,13 @@
 # Parking Lot
 
-Jakarta EE 10 / Java 21 web application based on the supplied Parking Lot lessons through section 4.
+Jakarta EE 10 / Java 21 web application based on the supplied Parking Lot lessons through section 5.
 
 ## What is implemented
 
 - Responsive JSP template with Bootstrap, shared menu and footer, home and About pages.
 - `/Cars` and `/Users` servlets and views that display records from MySQL through stateless EJBs and DTOs.
+- Add and edit forms for cars, with owner selection and client-side and server-side validation.
+- Multi-select deletion of cars from the Cars page.
 - The requested count of 10 free spots on the Cars page.
 - JPA `User` and `Car` entities with required fields, unique values, and a required owner relationship.
 - JTA persistence unit bound to `jdbc/ParkingLotResource`, with EclipseLink schema creation/extension triggered at application startup.
@@ -39,11 +41,13 @@ The deployable file is `build/libs/ParkingLot-1.0-SNAPSHOT.war`.
    | `serverName` | `localhost` |
    | `portNumber` | `3306` |
    | `useSSL` | `false` |
+   | `allowPublicKeyRetrieval` | `true` (for this localhost tutorial setup) |
 
    Ping the pool. The tutorial pairs `javax.sql.XADataSource` with `MysqlDataSource`; `MysqlXADataSource` is the class that implements the selected XA interface.
 4. Create a JDBC resource named `jdbc/ParkingLotResource` using `ParkingLotConnectionPool`.
 5. Deploy the WAR from IntelliJ or the GlassFish admin console. Open `/ParkingLot-1.0-SNAPSHOT/`, `/ParkingLot-1.0-SNAPSHOT/about.jsp`, and `/ParkingLot-1.0-SNAPSHOT/Cars`.
 6. Run `database/lab4-data.sql` in MySQL Workbench to insert the lesson 4 sample user and two cars. Open `/ParkingLot-1.0-SNAPSHOT/Cars` and `/ParkingLot-1.0-SNAPSHOT/Users` to see the database records.
+7. On `/ParkingLot-1.0-SNAPSHOT/Cars`, use **Add Car** to create a car, **Edit Car** to change it, or select one or more rows and use **Delete Cars**. Each car requires a unique license plate and parking spot and an existing owner.
 
 The lesson 4 SQL example uses column names that differ from this project's entity mappings. `database/lab4-data.sql` uses the actual `license_plate`, `parking_spot`, and `owner` columns and can be run more than once.
 

@@ -26,7 +26,7 @@ public class UsersBean {
             List<User> users = typedQuery.getResultList();
             List<UserDto> result = new ArrayList<>(users.size());
             for (User user : users) {
-                result.add(new UserDto(user.getUsername(), user.getEmail()));
+                result.add(new UserDto(user.getId(), user.getUsername(), user.getEmail()));
             }
             return result;
         } catch (Exception ex) {
